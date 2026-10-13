@@ -110,7 +110,7 @@ const scenes = {
 const sceneTitle = document.getElementById("scene-title");
 const sceneText = document.getElementById("scene-text");
 const choicesContainer = document.getElementById("choices-container");
-const characterName = document.getElementById("character-name");
+// const characterName = document.getElementById("character-name");
 
 // Then, we create a function to update the scene,
 function updateScene(sceneName) {
