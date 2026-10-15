@@ -10,85 +10,161 @@
 // --------------------------------------------------
 
 // First, we create a variable for the current scene being displayed
-let currentScene = "backyard";
+let currentScene = "controlRoom";
 
 // Then, we create an object that stores the data for each scene,
 const scenes = {
   // See "backyard" for the first example
-  backyard: {
-    title: "Location: Backyard",
-    character: "Interviewee:Grandma",
-    text: "Text: well what I remember happening is that Darcie went inside to play with her pretend kitchen, I heard her neighbor mention he was really hungry, and the dog ran around really quickly",
+  controlRoom: {
+    title: "Location: Control Room",
+    text: "The main room with red emergency light and broken screen and monitor",
+    image: "https://img.magnific.com/free-vector/spaceship-control-center-illustration_107791-5306.jpg?semt=ais_hybrid&w=740&q=80",
     // you can choose how many choices to include
     // each choice can have text, an action, and/or nextScene
     choices: [
       {
-        text: "Chase after the dog (-10 HP)",
+        text: "Search console",
         action: function () {
-          updateHealth(-10);
+          pickUpCode("1st Number");
+          messageDisplay.textContent = "You wipe off the dusty screen and find a number in the corner";
         },
-        nextScene: "entrance"
       },
       {
-        text: "Ask about the neighbor",
-        nextScene: "hallway"
+        text: "Go to Science Lab",
+        action: function () {
+          messageDisplay.textContent = "You walk through the sliding doors into the Science Lab";
+        },
+        nextScene: "scienceLab"
       },
       {
-          text: "Pick up the brass key",
-          action: function () {
-            pickUpItem("brass key");
-          },
-          nextScene: "hallway"
+        text: "Go to Engine room",
+        action: function () {
+          messageDisplay.textContent = "You walk down the stairs into the Engine Room";
+        },
+        nextScene: "engineRoom"
       }
     ]
   },
 
-  entrance: {
-    title: "Location: Entrance",
-    character: "Interviewee:Neighbor",
-    text: "well what I remember...",
+  scienceLab: {
+    title: "Location: Science Lab",
+    text: "A cold room that contains abandoned work station and a large glass tank filled with a blue liquid",
+    image: "https://img.magnific.com/free-vector/cartoon-spaceship-lab-interior-design_107791-20618.jpg?semt=ais_hybrid&w=740&q=80",
     choices: [
       {
-        text: "Ask about the dog",
-        nextScene: "backyard"
+        text: "Search desk",
+        action: function () {
+          pickUpItem("Security Keycard");
+          messageDisplay.textContent = "You open the desk drawers and find some kind of card";
+        }
       },
          {
-        text: "Ask about the neighbor",
-        nextScene: "hallway"
-      }
-    ]
-  },
-
-  hallway: {
-    title: "The Hallway",
-    text: "The hallway is dark and silent.",
-    choices: [
-      {
-        text: "backyard",
-        nextScene: "lockedDoor"
-      }
-    ]
-  },
-
-   lockedDoor: {
-    title: "The Locked Door",
-    text: "The door handle doesn't move.",
-    choices: [
-      {
-        text: "Try to open it",
-        action: unlockDoor
+        text: "Search glass tank",
+        action: function () {
+          pickUpCode("2nd Number");
+          messageDisplay.textContent = "You look though the blue liquid and spot a number at the bottom of the glass";
+        }
       },
       {
-        text: "Go back",
-        nextScene: "backyard"
+        text: "Go back to Control room",
+        action: function () {
+          messageDisplay.textContent = "You walk back to the Control Room";
+        },
+        nextScene: "controlRoom"
       }
     ]
   },
 
-   solution: {
-    title: "The solution",
-    text: "You solved the mystery!",
-    
+  engineRoom: {
+    title: "Location: Engine Room",
+    text: "A hot burning room with power generators, filled with loose wires hanging from the ceiling",
+    image: "https://media.moddb.com/cache/images/games/1/26/25055/thumb_620x2000/station_concept_3.jpg",
+    choices: [
+      {
+        text: "Search fuse box",
+        action: function () {
+          pickUpCode("3rd Number");
+          messageDisplay.textContent = "You open the fuse box and find a piece of paper taped inside with a number";
+        },
+      },
+      {
+        text: "Open locked door to Storage room",
+        action: function () {
+          unlockDoor();
+        }
+      },
+      {
+        text: "Go back to Control room",
+        action: function () {
+          messageDisplay.textContent = "You walk back to the Control Room";
+        },
+        nextScene: "controlRoom"
+      }
+    ]
+  },
+
+   storageRoom: {
+    title: "Location: Storage Room",
+    text: "A dark and cramped room filled with metal supply crates and boxes",
+    image: "https://cdna.artstation.com/p/assets/images/images/016/506/842/large/isaac-kho-unity02.jpg?1552417459",
+    choices: [
+      {
+        text: "Search storages crates",
+        action: function () {
+          pickUpCode("4th Number");
+          messageDisplay.textContent = "You open a supply crate and see a number carved inside the lid";
+        }
+      },
+      {
+        text: "Go to Escape room",
+        action: function () {
+          messageDisplay.textContent = "You walk to the Escape Room";
+        },
+        nextScene: "escapeRoom"
+      },
+      {
+        text: "Go back to Engine room",
+        action: function () {
+          messageDisplay.textContent = "You walk back to the Engine Room";
+        },
+        nextScene: "engineRoom"
+      }
+    ]
+  },
+
+   escapeRoom: {
+    title: "Location: Escape Room",
+    text: "A small emergency room that contains an escape pod with a keypad on the wall, waiting for a code",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmtHARjidbR6LTCgURTCNlGtkzbIt3gXQsuYpc8FXh6CS7h0wASF5RM6A&s=10",
+    choices: [
+      {
+        text: "Enter the 4 digit code into the console",
+        action: function () {
+          checkCode();
+        }
+      },
+      {
+        text: "Go back to Storage room",
+        action: function () {
+          messageDisplay.textContent = "You walk back to the Storage Room";
+        },
+        nextScene: "storageRoom"
+      }
+    ]
+  },
+
+   winScene: {
+    title: "You Win",
+    text: "You enter the correct code. The vr system closes and your VR headgear turn off, you safely take off your headgear and promise to never play any game again",
+    image: "https://cdn.displate.com/artwork/270x380/2025-08-06/ba18731a-27cf-4665-9a0f-ba933ebf4b98.jpg",
+    choices: []
+  },
+
+   loseScene: {
+    title: "You Lose",
+    text: "Your sanity has crumbled and your headgear overheats frying your brain, your vision go blank and you slowly start losing your consciousness",
+    image: "https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2024/07/man-with-cracked-vr-headset.png?w=1600&h=1600&fit=crop",
+    choices: []
   }
 };
 
@@ -110,7 +186,8 @@ const scenes = {
 const sceneTitle = document.getElementById("scene-title");
 const sceneText = document.getElementById("scene-text");
 const choicesContainer = document.getElementById("choices-container");
-// const characterName = document.getElementById("character-name");
+const characterName = document.getElementById("character-name");
+const sceneImage = document.getElementById("scene-image");
 
 // Then, we create a function to update the scene,
 function updateScene(sceneName) {
@@ -126,6 +203,7 @@ function updateScene(sceneName) {
   sceneTitle.textContent = scene.title;
   sceneText.textContent = scene.text;
   characterName.textContent = scene.character;
+  sceneImage.src = scene.image;
 
   // Clear the old buttons before creating new ones
   choicesContainer.innerHTML = "";
@@ -173,7 +251,11 @@ const healthDisplay = document.getElementById("health-display");
 // Create a function to update health 
 function updateHealth(amount) {
   health += amount;
-  healthDisplay.textContent = health;
+  healthDisplay.textContent = health + "%";
+
+  if (health <= 0) {
+    updateScene("loseScene");
+  }
 }
 
 // This refreshes the health display
@@ -197,8 +279,29 @@ const messageDisplay = document.getElementById("message-display");
 function pickUpItem(itemName) {
     // Add itemName to the inventory array
     // Show the updated inventory on the page
-  inventory.push(itemName);
-  inventoryDisplay.textContent = inventory.join(", ");
+
+    if (!inventory.includes(itemName)) {
+        inventory.push(itemName);
+        messageDisplay.textContent = "You picked up: " + itemName;
+        inventoryDisplay.textContent = inventory.join(", ");
+    }
+}
+
+let codeTracker = [];
+
+// Display current inventory
+const codeTrackerDisplay = document.querySelector("#codeTracker-display");
+
+// Create a function to update inventory 
+function pickUpCode(itemName) {
+    // Add itemName to the inventory array
+    // Show the updated inventory on the page
+
+    if (!codeTracker.includes(itemName)) {
+        codeTracker.push(itemName);
+        messageDisplay.textContent = "You found: " + itemName;
+        codeTrackerDisplay.textContent = codeTracker.join(", ");
+    }
 }
 
 // --------------------------------------------------
@@ -209,10 +312,22 @@ function pickUpItem(itemName) {
 
 // Create a function that checks if the inventory contains one item and if so shows the win condition scene.
 function unlockDoor() {
-  if (inventory.includes("brass key")) {
-    updateScene("solution");
+  if (inventory.includes("Security Keycard")) {
+    updateScene("storageRoom");
+    messageDisplay.textContent = "You swiped the keycard across the lock, the scanner turns green and the heavy steel door slides open";
   } else {
-    messageDisplay.textContent = "The door is locked.";
+    messageDisplay.textContent = "You were denied access to the the storage room, the heavy steel door stays locked. Maybe you need a keycard to open it";
+    updateHealth(-30);
+  }
+}
+
+function checkCode() {
+  if (codeTracker.includes("1st Number") && codeTracker.includes("2nd Number") && codeTracker.includes("3rd Number") && codeTracker.includes("4th Number")) {
+    messageDisplay.textContent = "It shows a green success, you safely escape in the escape pod";
+    updateScene("winScene");
+  } else {
+    messageDisplay.textContent = "It shows a red error and the screen sparks violently, you need to find all 4 numbers to escape";
+    updateHealth(-50);
   }
 }
 
