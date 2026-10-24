@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -23,26 +24,30 @@
     </header>
 
     <main>
-    <header>
-        <h1 id="scene-title">  </h1>
-        <h2 id="character-name">  </h2>
-    </header>
+    <div class="game-card">
+        <header>
+            <h1 id="scene-title" class="game-heading">  </h1>
+            <h2 id="character-name">  </h2>
+        </header>
+    </div>
     
-    <section>
-        <img id="scene-image" src="" alt="scene image" width="500" height="300">
+    <div class="game-card">
+        <section>
+            <img id="scene-image" src="" alt="scene image" width="500" height="300">
 
-    </section>
+        </section>
 
-    <section>
-    <p id="scene-text">     </p>
+        <section>
+        <p id="scene-text">     </p>
 
-    </section>
+        </section>
 
-    <section>
-        <div id="choices-container"> </div>
-    </section>   
+        <section>
+            <div id="choices-container"> </div>
+        </section>   
+    </div>
         
-    <section>
+    <section id="sanity-panel">
         <p> Sanity Level:</p>
         <ul>
             <li id="health-display"> 100%</li>

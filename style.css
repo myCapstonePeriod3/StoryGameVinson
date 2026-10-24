@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121214;
+    color: #e1e1e6;
+    margin: 20px;
+}
+
+.game-heading {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: #00f0ff;
+    background-color: #1a1a24;
+    padding: 15px;
+    border: 2px solid #00f0ff;
+}
+
+.game-card {
+    background-color: #1e1e28;
+    padding: 20px;
+    border: 2px solid #4a4a6a;
+    text-align: left;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+#sanity-panel {
+    color: #ff3366;
+    background-color: #241217;
+    padding: 12px;
+    border: 2px solid #ff3366;
+    font-weight: bold;
+}
+
+#inventory-display {
+    color: #00ff66;
+    background-color: #0d1a12;
+    padding: 10px;
+    border: 1px dashed #00ff66;
+    font-weight: bold;
+}
