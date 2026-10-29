@@ -3,75 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>VR Space Station Game</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-
+    
 </head>
 <body>
-    <header>
-      <nav>
-            <ul> 
-                <li><a href="index.html">Home</a></li>
-            </ul>
-            <ul> 
-                <li><a href="game.html">Play the game</a></li>
-            </ul>
-            <ul> 
-                <li><a href="about.html">About the creator</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
-    <div class="game-card">
         <header>
-            <h1 id="scene-title" class="game-heading">  </h1>
-            <h2 id="character-name">  </h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Play the game</a></li>
+                    <li><a href="about.html">About the creator</a></li>
+                </ul>
+            </nav>
         </header>
-    </div>
-    
-    <div class="game-card">
-        <section>
-            <img id="scene-image" src="" alt="scene image" width="500" height="300">
 
+        <div class="game-card">
+            <h1 id="scene-title" class="game-heading">Location: Control Room</h1>
+            <h2 id="character-name"></h2>
+        </div>
+
+        <div class="game-card">
+            <section>
+                <img id="scene-image" src="https://img.magnific.com/free-vector/spaceship-control-center-illustration_107791-5306.jpg?semt=ais_hybrid&w=740&q=80" alt="scene image">
+            </section>
+
+            <section>
+                <p id="scene-text">The main room with red emergency light and broken screen and monitor</p>
+            </section>
+
+            <section>
+                <div id="choices-container"></div>
+            </section>
+        </div>
+
+        <section id="sanity-panel">
+            <p>SANITY LEVEL:</p>
+            <ul>
+                <li id="health-display">100%</li>
+            </ul>
         </section>
 
-        <section>
-        <p id="scene-text">     </p>
-
-        </section>
-
-        <section>
-            <div id="choices-container"> </div>
-        </section>   
-    </div>
-        
-    <section id="sanity-panel">
-        <p> Sanity Level:</p>
-        <ul>
-            <li id="health-display"> 100%</li>
-        </ul>
-
-        <p> Inventory:</p>
-        <ul>
-            <li id="inventory-display"> </li>
-        </ul>
-
-        <p id="message-display"></p>
-
-        <p> Code Tracker:</p>
-        <ul>
-            <li id="codeTracker-display"> </li>
-        </ul>
-
-        <p id="messageCode-display"></p>
-    </section>
-
-
+        <div class="game-card">
+            <p style="color: #00f0ff; font-family: 'Orbitron', sans-serif; text-align: left; margin-top: 0;">INVENTORY:</p>
+            <div id="inventory-display">None</div>
+            <p id="message-display"></p>
+            <p id="codeTracker-display"></p>
+            <p id="messageCode-display"></p>
+        </div>
     </main>
-    <footer>
-
-    </footer>
 </body>
 </html>
